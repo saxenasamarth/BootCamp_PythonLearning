@@ -23,6 +23,10 @@
 	 <a href="/">home</a><br>
 	 {% if session %}
 	 <a href="/logout">logout</a>
-	 {% endif %}	
+	 {% endif %}
+	 {% if session.type=="buyer" %}
+	 <a href="/cart">cart</a>
+	 {% endif %}
+
 </footer>
 </html>

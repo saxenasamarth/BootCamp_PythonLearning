@@ -5,9 +5,9 @@
 {% for product in products %}
 	<ul>
 		<li><b>product name</b>  : {{ product['product_name'] }}</li>
-		<li><b>product price</b> : {{ product['price'] }}</li>
-		<li><b>Description</b>   : {{ product['description'] }}</li>
-		<li><b>seller</b>        : {{ product['seller'] }}</li>
+		<li><b>product price</b> : {{ product['product_price'] }}</li>
+		<li><b>Description</b>   : {{ product['product_desc'] }}</li>
+		<li><b>seller</b>        : {{ product['product_seller'] }}</li>
 	</ul>
 	{% if session['type']=='buyer' %}
 	<form action="/cart" method="POST" >
