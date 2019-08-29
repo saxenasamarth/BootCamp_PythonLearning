@@ -1,0 +1,3 @@
+InOrder ---> Left, centre, right
+preorder---> centre left right
+postorder---> left right centre

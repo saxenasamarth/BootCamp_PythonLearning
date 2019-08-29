@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+   <body>
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+			<ul class=flashes>
+			{% for message in messages %}
+			  <p style="color:red;">{{ message }}</p></br>
+			{% endfor %}
+			</ul>
+		  {% endif %}
+	    {% endwith %}   
+		 <button type="button" onclick="window.location.href='{{ url_for('notes') }}';">Add note</button>
+         {% for note in notes %}
+			<p> Created time : {{note["created_time"]}} </p>
+			<p> Updated time : {{note["updated_time"]}} </p>
+			<img  src="{{ url_for('send_file', filename=note.author.image) }}" height="32" width="32"></img>
+			<p> Author : {{note.author.name}} </p>			
+			<p> {{note["note"]}} </p>
+			<button type="button" onclick="window.location.href='{{ url_for('modify_note', note=note.note, id=note.id) }}';">Modify</button></br></br>
+			<form method="post" action = "http://localhost:5000/delete_note">
+				<input type="hidden" value={{note["id"]}} name="id" />
+				<input type="submit" value="Delete">
+			</form>	
+         {% endfor %}
+         <form method="post" action = "http://localhost:5000/get_image">
+                <input type="submit" value="Get">
+         </form></br></br>
+         <img src="{{ url_for('send_file', filename='federer.jpg') }}" height="128" width="128">
+		 </br></br>
+   </body>
+</html>

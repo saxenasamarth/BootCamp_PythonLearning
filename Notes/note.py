@@ -1,9 +1,18 @@
 from datetime import datetime
 import pickle
 
+#try:
+#note_list=[]
+
 class notes:
 	counter =0
-	note_list=[]
+	
+	
+	#except:
+	#	print("note list empty")
+	#	note_list=[]
+	
+
 	
 	def __init__(self, note):
 		notes.counter+=1
@@ -12,15 +21,7 @@ class notes:
 		self.__create_time=datetime.now()
 		self.__update_time=datetime.now()
 
-	def save_state(func):
-		def inner_func(*args,**kwargs):
-			print("saving state")
-			filer =open("notes.dump", "wb")
-			pickle.dump(n, filer)
-			filer.close
-			value=func(*args, **kwargs)
-			return value
-		return inner_func
+	
 
 
 	def get_note(self):
@@ -34,7 +35,7 @@ class notes:
 		info_dict["update_time"]=self.__update_time
 		return info_dict
 
-	
+	#@save_state
 	def update_note(self,note):
 		self.__note=note
 		self.__update_time=datetime.now()
